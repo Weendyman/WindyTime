@@ -39,7 +39,7 @@ public class
 MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     public String baseUrl = "https://api.openweathermap.org/data/2.5/";
-    public static String appId = "eeceb4e5d659ceb2fcf468d6db42a87d";
+    public static String appId = "eeceb4e5d659ceb2fcf468d6db42a8d";
     public static String lat = "18.70685806067791";
     public static String lon = "-68.44111568510208";
     public static String metric ="metric";
