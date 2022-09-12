@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+<RelativeLayout
+    android:layout_weight=".3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MapsActivity" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_weight=".7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/item1"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+
+                    android:layout_row="0"
+                    android:layout_column="0" />
+
+                <TextView
+                    android:id="@+id/item1000"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:text="Direction" />
+
+                <TextView
+                    android:id="@+id/item1001"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:text="Speed" />
+
+                <TextView
+                    android:id="@+id/item1002"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:text="Gust" />
+
+                <TextView
+                    android:id="@+id/item1004"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:text="Temp" />
+
+                <TextView
+                    android:id="@+id/item2"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="1" />
+
+                <TextView
+                    android:id="@+id/item3"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="2" />
+
+                <TextView
+                    android:id="@+id/item4"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="3" />
+
+                <TextView
+                    android:id="@+id/item5"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="4" />
+
+                <TextView
+                    android:id="@+id/item6"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="5" />
+
+                <TextView
+                    android:id="@+id/item7"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="6" />
+
+                <TextView
+                    android:id="@+id/item8"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="7" />
+
+                <TextView
+                    android:id="@+id/item9"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="8" />
+
+                <TextView
+                    android:id="@+id/item10"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="0"
+                    android:layout_column="9" />
+
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="1"
+                    android:layout_column="1"
+
+                    />
+
+                <TextView
+                    android:id="@+id/item82"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/item122"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="3"
+                    android:layout_column="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/item164"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:gravity="center" />
+
+            </GridLayout>
+
+
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
