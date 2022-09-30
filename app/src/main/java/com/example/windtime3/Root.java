@@ -5,6 +5,6 @@ public class Root{
     public String cod;
     public int message;
     public int cnt;
-    public ArrayList<List> list;
+    public ArrayList<List<Object>> list;
     public City city;
 }

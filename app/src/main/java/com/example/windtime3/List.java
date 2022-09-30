@@ -1,7 +1,7 @@
 package com.example.windtime3;
 import java.util.ArrayList;
 
-public class List{
+public class List<P extends Object> {
     public int dt;
     public Main main;
     public ArrayList<Weather> weather;

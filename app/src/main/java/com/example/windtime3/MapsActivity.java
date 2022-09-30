@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.Placeholder;
 import androidx.fragment.app.FragmentActivity;
+import androidx.room.Room;
 
 import com.example.windtime3.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdate;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +41,7 @@ public class
 MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     public String baseUrl = "https://api.openweathermap.org/data/2.5/";
-    public static String appId = "eeceb4e5d659ceb2fcf468d6db42a8d";
+    public static String appId = "eeceb4e5d659ceb2fcf468d6db42a87d";
     public static String lat = "18.70685806067791";
     public static String lon = "-68.44111568510208";
     public static String metric ="metric";
@@ -62,20 +64,20 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
 
-    public class Place   {
-        String name;
-        Double lat;
-        Double lng;
-     public Place(String name,double lat,double lng){
-       this.name =name;
-       this.lat=lat;
-       this.lng=lng;
-     }
-    @Override
-        public String toString(){
-        return  name;
-    }
-    }
+//    public class Place   {
+//        String name;
+//        Double lat;
+//        Double lng;
+//     public Place(String name,double lat,double lng){
+//       this.name =name;
+//       this.lat=lat;
+//       this.lng=lng;
+//     }
+//    @Override
+//        public String toString(){
+//        return  name;
+//    }
+//    }
 
     public  void getCurrentData(Place place){
         Retrofit retrofit = new Retrofit.Builder()
@@ -84,6 +86,7 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
+
 
 
         Call<Root> call = weatherApi.getCurrentWeatherData(place.lat.toString(),place.lng.toString(),appId,metric);
@@ -137,6 +140,20 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Place bavaro=new Place(1,"Bavaro",18.70685806067791,-68.44111568510208);
+        Place elgouna =new Place(2,"Elgouna",27.318422,  33.712308);
+
+        PlaceDatabase db= Room.databaseBuilder(getApplicationContext(),PlaceDatabase.class,"database").allowMainThreadQueries().build();
+        db.daoPlace().insert(bavaro);
+        db.daoPlace().insert(elgouna);
+        List<Place> placeList=db.daoPlace().getAll();
+
+        System.out.println(placeList.toString());
+
+
+
+
+
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -169,25 +186,25 @@ MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-        Place start = new Place(" ",0,0);
-        Place bavaro =new Place("Bavaro",18.70685806067791,-68.44111568510208);
-        Place borovsk =new Place("Borovsk",55.191885,  36.515605);
-
-        ArrayList<Place> plases =new ArrayList<>();
-
-        plases.add(bavaro);
-        plases.add(borovsk);
-        plases.add(new Place("Novoseltsvo",55.998922, 37.590274));
-        plases.add(new Place("Elgouna",27.318422,  33.712308));
-        plases.add(new Place("Pereslavl-Zalessky" , 56.749528,  38.845007));
-        plases.add(new Place("Mezhvodnoe" ,45.556208, 32.830862));
-
-
+//        Place start = new Place(" ",0,0);
+//        Place bavaro =new Place("Bavaro",18.70685806067791,-68.44111568510208);
+//        Place borovsk =new Place("Borovsk",55.191885,  36.515605);
+//
+//        ArrayList<Place> plases =new ArrayList<>();
+//
+//        plases.add(bavaro);
+//        plases.add(borovsk);
+//        plases.add(new Place("Novoseltsvo",55.998922, 37.590274));
+//        plases.add(new Place("Elgouna",27.318422,  33.712308));
+//        plases.add(new Place("Pereslavl-Zalessky" , 56.749528,  38.845007));
+//        plases.add(new Place("Mezhvodnoe" ,45.556208, 32.830862));
 
 
 
 
-        ArrayAdapter<Place> arrayAdapter = new ArrayAdapter<Place>(this, android.R.layout.simple_spinner_item,plases);
+
+
+        ArrayAdapter<Place> arrayAdapter = new ArrayAdapter<Place>(this, android.R.layout.simple_spinner_item,placeList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         try {
